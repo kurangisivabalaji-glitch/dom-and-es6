@@ -3,27 +3,190 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOM Example</title>
+  <title>Flexbox Responsive DOM</title>
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      min-height:100vh;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      background:linear-gradient(135deg,#667eea,#764ba2);
+
+      font-family:Arial;
+
+      padding:20px;
+    }
+
+    /* FLEXBOX CONTAINER */
+
+    .container{
+
+      display:flex;
+
+      gap:20px;
+
+      justify-content:center;
+
+      align-items:center;
+
+      flex-wrap:wrap;
+    }
+
+    /* BOX */
+
+    .box{
+
+      background:white;
+
+      width:300px;
+
+      padding:40px;
+
+      border-radius:20px;
+
+      text-align:center;
+
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+
+      animation:fade 1s ease;
+
+      transition:0.3s;
+    }
+
+    .box:hover{
+      transform:translateY(-10px);
+    }
+
+    h1{
+      color:#333;
+      margin-bottom:20px;
+      transition:0.5s;
+    }
+
+    button{
+
+      padding:12px 25px;
+
+      border:none;
+
+      background:#6c63ff;
+
+      color:white;
+
+      font-size:18px;
+
+      border-radius:10px;
+
+      cursor:pointer;
+
+      transition:0.3s;
+    }
+
+    button:hover{
+
+      transform:scale(1.1);
+
+      background:#4834d4;
+    }
+
+    /* RESPONSIVE DESIGN */
+
+    @media(max-width:768px){
+
+      .container{
+
+        flex-direction:column;
+      }
+
+      .box{
+
+        width:100%;
+        max-width:350px;
+      }
+
+    }
+
+    @keyframes fade{
+
+      from{
+        opacity:0;
+        transform:translateY(-50px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+  </style>
 </head>
+
 <body>
 
   <div class="container">
 
-    <h1 id="title">Welcome User</h1>
+    <div class="box">
 
-    <p id="text">
-      Click the button to change content
-    </p>
+      <h1 id="title1">Box 1</h1>
 
-    <button id="btn">
-      Click Me
-    </button>
+      <button onclick="changeText('title1')">
+        Click Me
+      </button>
+
+    </div>
+
+    <div class="box">
+
+      <h1 id="title2">Box 2</h1>
+
+      <button onclick="changeText('title2')">
+        Click Me
+      </button>
+
+    </div>
+
+    <div class="box">
+
+      <h1 id="title3">Box 3</h1>
+
+      <button onclick="changeText('title3')">
+        Click Me
+      </button>
+
+    </div>
 
   </div>
 
-  <script src="script.js"></script>
+  <script>
+
+    function changeText(id){
+
+      const title = document.getElementById(id);
+
+      title.innerHTML = "Responsive Success";
+
+      title.style.color = "blue";
+
+      title.style.fontSize = "35px";
+
+      document.body.style.background =
+      "linear-gradient(135deg,#ff9a9e,#fad0c4)";
+
+    }
+
+  </script>
 
 </body>
 </html>
